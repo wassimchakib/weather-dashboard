@@ -6,15 +6,41 @@
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  display: inline-block;
+}
+
 :root {
   --primary-color: #191b1f;
   --secondary-color: #1d6ff2;
   --orange: #ff8157;
   --blue: #3ecde0;
   --yellow: #ffc62d;
+  --white: #fcfcfd;
+}
+
+.container {
+  margin-left: 120px;
+  margin-top: 20px;
 }
 
 body {
   font-size: 62.5%;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin-left: 220px;
+  }
 }
