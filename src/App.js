@@ -1,10 +1,12 @@
 import './App.css';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
-    <h1>
-      Hello World
-    </h1>
+    <>
+      <Sidebar />
+      <h1>Hello World</h1>
+    </>
   );
 }
 
