@@ -1,14 +1,17 @@
 import './Dashboard.css';
-import IconLogo from '../../assets/Lightning.svg';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Dashboard = () => (
   <section className="dashboard">
     <div className="dashboard__home">
-      <img src={IconLogo} alt="Icon logo" />
-      <span className="dashboard__temperature">
-        28
-        <sup>°c</sup>
-      </span>
+      <form className="dashboard__bar">
+        <input type="text" placeholder="Type City Name" name="city" />
+        <button type="submit">
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
+
+      </form>
     </div>
   </section>
 );
