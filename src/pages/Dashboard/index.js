@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
-import { faSearch, faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { city } from '../../fakeData';
 import getImageIcon from '../../utils/imageicons';
-import { getDate, fahreinheitToCelcius } from '../../utils/functions';
+import { getDate } from '../../utils/functions';
+import Searchbar from '../../components/Searchbar';
+import Temperature from '../../components/Temperature.jsx';
 
 const Dashboard = () => {
   const [dateNow, setdateNow] = useState(getDate());
@@ -21,18 +23,11 @@ const Dashboard = () => {
   }, []);
   return (
     <section className="dashboard">
-      <div className="dashboard__home">
-        <form className="dashboard__bar">
-          <input type="text" placeholder="Type City Name" name="city" />
-          <button type="submit">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </form>
-      </div>
+      <Searchbar />
       <div className="dashboard__content">
         <div className="dashboard__main">
           <img src={getImageIcon(city.weather[0].icon)} alt="Dusk" />
-          <h2 className="dashboard__temperature">
+          {/* <h2 className="dashboard__temperature">
             {isFahreinheit ? (
               <>
                 {city.main.temp}
@@ -47,7 +42,8 @@ const Dashboard = () => {
                   <sup className="celcius">°C</sup>
                 </>
               )}
-          </h2>
+          </h2> */}
+          <Temperature isFahreinheit={isFahreinheit} temperature={city.main.temp} />
           <h2 className="dashboard__sunrise">
             <img src={getImageIcon('sunrise')} alt="sunrise" />
             {new Date(city.sys.sunrise).getHours()}
