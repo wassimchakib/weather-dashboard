@@ -7,7 +7,7 @@ import {
   faWind,
 } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
-import IconImg from '../../assets/Lightning.svg';
+import IconImg from '../../assets/lightning.svg';
 
 const Sidebar = () => {
   const [width, setwidth] = useState(window.innerWidth);
