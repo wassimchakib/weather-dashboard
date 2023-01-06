@@ -7,6 +7,7 @@ import {
   faWind,
 } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
+import IconImg from '../../assets/lightning.svg';
 
 const Sidebar = () => {
   const [width, setwidth] = useState(window.innerWidth);
@@ -25,6 +26,7 @@ const Sidebar = () => {
   return (
     <nav className="sidebar">
       <h1 className="sidebar__title">
+        <img className="sidebar__icon" src={IconImg} alt="logo" />
         {width > 768 && <span>Weather App</span>}
       </h1>
       <ul className="sidebar__nav">
