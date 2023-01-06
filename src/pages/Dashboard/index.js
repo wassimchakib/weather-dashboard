@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { city, forecast } from '../../fakeData';
 import getImageIcon from '../../utils/imageicons';
 import { getCityName, getDate, getHoursAndMinutes } from '../../utils/functions';
 import Searchbar from '../../components/Searchbar';
@@ -12,14 +12,15 @@ import Temperature from '../../components/Temperature.jsx';
 import Forecast from '../../components/Forecast';
 
 const Dashboard = () => {
-  const [dateNow, setdateNow] = useState(getDate());
+  const [dateNow, setdateNow] = useState('');
   const [isFahreinheit, setisFahreinheit] = useState(true);
+  const city = useSelector((state) => state.city.city);
 
+  getHoursAndMinutes(city.sys.sunrise);
   useEffect(() => {
     const interval = setInterval(() => {
       setdateNow(getDate());
     }, 1000);
-
     return () => {
       clearInterval(interval);
     };
@@ -27,7 +28,7 @@ const Dashboard = () => {
   return (
     <section
       className="dashboard"
-      style={{ background: 'linear-gradient(180deg, rgba(25, 27, 31, 1) 0%, rgba(62, 205, 224, 0.8) 100%), url(https://d2fg1aan4gy9m1.cloudfront.net/ert/images/352/Montecorone-Zocca-MO-veduta-ph.PrimoMasotti-TerrediCastelli-Facebook-CCBYNCSA.jpg)' }}
+      style={{ background: `linear-gradient(180deg, rgba(25, 27, 31, 1) 0%, rgba(62, 205, 224, 0.8) 100%), url(${city.img_url}) no-repeat` }}
     >
       <Searchbar />
       <div className="dashboard__content">
@@ -35,8 +36,9 @@ const Dashboard = () => {
           className="dashboard__detail"
           to={{
             pathname: '/detail',
-            state: city,
+            search: `city=${'london'}`,
           }}
+          state={{ ...city, isFahreinheit }}
         >
           <div className="dashboard__main">
             <img src={getImageIcon(city.weather[0].icon)} alt="Dusk" />
@@ -49,10 +51,32 @@ const Dashboard = () => {
               <img src={getImageIcon('sunset')} alt="sunset" />
               {getHoursAndMinutes(city.sys.sunset)}
             </h2>
-            <div className="dashboard__conversion">
-              <button className={isFahreinheit && 'active'} type="button" onClick={() => { setisFahreinheit(true); }}>°F</button>
-              <button className={!isFahreinheit && 'active'} type="button" onClick={() => { setisFahreinheit(false); }}>°C</button>
-            </div>
+            <form className="dashboard__conversion">
+              <button
+                className={isFahreinheit ? 'active' : undefined}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setisFahreinheit(true);
+                }}
+              >
+                °F
+
+              </button>
+              <button
+                className={!isFahreinheit ? 'active' : undefined}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setisFahreinheit(false);
+                }}
+              >
+                °C
+
+              </button>
+            </form>
 
             <h2 className="dashboard__city">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -69,8 +93,9 @@ const Dashboard = () => {
         {/* Forecast  */}
         <div className="dashboard__forecast">
           <ul>
-            {forecast.list.length > 0
-              ? forecast.list.map((fc) => <li key={fc.dt}><Forecast fc={fc} /></li>)
+            {city.forecast.list.length > 0
+              ? city.forecast.list.slice(0, 4)
+                .map((fc) => <li key={fc.dt}><Forecast fc={fc} fahreinheit={isFahreinheit} /></li>)
               : <li>No Forecast found</li>}
           </ul>
         </div>

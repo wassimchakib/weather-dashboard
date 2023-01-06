@@ -1,5 +1,7 @@
 .dashboard {
   height: 100vh;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 .dashboard__content {
@@ -96,7 +98,6 @@
 }
 
 .dashboard__detail {
-  width: 50%;
   max-width: 500px;
 }
 
