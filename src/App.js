@@ -1,4 +1,6 @@
+import { Provider } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import store from './redux/store';
 import './App.css';
 import Sidebar from './components/Sidebar/index';
 import AirPollution from './pages/AirPollution';
@@ -8,7 +10,7 @@ import Detail from './pages/Detail';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <Sidebar />
       <div className="container">
         <Routes>
@@ -20,7 +22,7 @@ function App() {
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </div>
-    </>
+    </Provider>
   );
 }
 

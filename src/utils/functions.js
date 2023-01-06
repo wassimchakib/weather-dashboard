@@ -10,7 +10,8 @@ const getDate = () => {
 };
 
 const getHoursAndMinutes = (dt) => {
-  const newDate = new Date(dt);
+  const newDate = typeof dt === 'string' ? new Date(dt) : new Date(dt * 1000);
+
   return newDate.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',

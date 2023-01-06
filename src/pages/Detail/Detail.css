@@ -1,3 +1,25 @@
 .detail {
   font-size: 20px;
 }
+
+.detail__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+  gap: 10px;
+  align-items: center;
+}
+
+.detail__content span {
+  display: block;
+  background-color: #355656;
+  padding: 10px;
+  border-radius: 20px;
+  width: 50%;
+}
+
+.detail__content span h3 {
+  font-weight: 200;
+  font-size: 15px;
+}
