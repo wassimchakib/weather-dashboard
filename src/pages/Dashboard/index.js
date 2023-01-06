@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { city, forecast } from '../../fakeData';
 import getImageIcon from '../../utils/imageicons';
 import { getCityName, getDate, getHoursAndMinutes } from '../../utils/functions';
@@ -14,11 +14,6 @@ import Forecast from '../../components/Forecast';
 const Dashboard = () => {
   const [dateNow, setdateNow] = useState(getDate());
   const [isFahreinheit, setisFahreinheit] = useState(true);
-  const navigate = useNavigate();
-
-  const handleClick = (city) => {
-    navigate('/detail', { state: city });
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
