@@ -1,16 +1,24 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
 import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { city } from '../../fakeData';
+import { Link, useNavigate } from 'react-router-dom';
+import { city, forecast } from '../../fakeData';
 import getImageIcon from '../../utils/imageicons';
 import { getCityName, getDate, getHoursAndMinutes } from '../../utils/functions';
 import Searchbar from '../../components/Searchbar';
 import Temperature from '../../components/Temperature.jsx';
+import Forecast from '../../components/Forecast';
 
 const Dashboard = () => {
   const [dateNow, setdateNow] = useState(getDate());
   const [isFahreinheit, setisFahreinheit] = useState(true);
+  const navigate = useNavigate();
+
+  const handleClick = (city) => {
+    navigate('/detail', { state: city });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,35 +36,48 @@ const Dashboard = () => {
     >
       <Searchbar />
       <div className="dashboard__content">
-        <div className="dashboard__main">
-          <img src={getImageIcon(city.weather[0].icon)} alt="Dusk" />
-          <Temperature isFahreinheit={isFahreinheit} temperature={city.main.temp} />
-          <h2 className="dashboard__sunrise">
-            <img src={getImageIcon('sunrise')} alt="sunrise" />
-            {getHoursAndMinutes(city.sys.sunrise)}
-          </h2>
-          <h2 className="dashboard__sunset">
-            <img src={getImageIcon('sunset')} alt="sunset" />
-            {getHoursAndMinutes(city.sys.sunset)}
-          </h2>
-          <div className="dashboard__conversion">
-            <button className={isFahreinheit && 'active'} type="button" onClick={() => { setisFahreinheit(true); }}>°F</button>
-            <button className={!isFahreinheit && 'active'} type="button" onClick={() => { setisFahreinheit(false); }}>°C</button>
+        <Link
+          className="dashboard__detail"
+          to={{
+            pathname: '/detail',
+            state: city,
+          }}
+        >
+          <div className="dashboard__main">
+            <img src={getImageIcon(city.weather[0].icon)} alt="Dusk" />
+            <Temperature isFahreinheit={isFahreinheit} temperature={city.main.temp} />
+            <h2 className="dashboard__sunrise">
+              <img src={getImageIcon('sunrise')} alt="sunrise" />
+              {getHoursAndMinutes(city.sys.sunrise)}
+            </h2>
+            <h2 className="dashboard__sunset">
+              <img src={getImageIcon('sunset')} alt="sunset" />
+              {getHoursAndMinutes(city.sys.sunset)}
+            </h2>
+            <div className="dashboard__conversion">
+              <button className={isFahreinheit && 'active'} type="button" onClick={() => { setisFahreinheit(true); }}>°F</button>
+              <button className={!isFahreinheit && 'active'} type="button" onClick={() => { setisFahreinheit(false); }}>°C</button>
+            </div>
+
+            <h2 className="dashboard__city">
+              <FontAwesomeIcon icon={faLocationDot} />
+              {getCityName(city)}
+            </h2>
+
+            <h2 className="dashboard__time">
+              <FontAwesomeIcon icon={faCalendarDays} />
+              {dateNow}
+            </h2>
           </div>
+        </Link>
 
-          <h2 className="dashboard__city">
-            <FontAwesomeIcon icon={faLocationDot} />
-            {getCityName(city)}
-          </h2>
-
-          <h2 className="dashboard__time">
-            <FontAwesomeIcon icon={faCalendarDays} />
-            {dateNow}
-          </h2>
-        </div>
-
+        {/* Forecast  */}
         <div className="dashboard__forecast">
-          5 days forecast
+          <ul>
+            {forecast.list.length > 0
+              ? forecast.list.map((fc) => <li key={fc.dt}><Forecast fc={fc} /></li>)
+              : <li>No Forecast found</li>}
+          </ul>
         </div>
       </div>
     </section>
