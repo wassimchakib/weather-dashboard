@@ -84,7 +84,7 @@
 <!-- > Add a link to your deployed project. -->
 
 - [Link1](weather-dashboard-delta.vercel.app)
-- [Link2]()
+- [Link2](https://develop--lambent-beignet-32b81d.netlify.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
