@@ -3,23 +3,15 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './Searchbar.css';
-// import API from '../../services/API';
 import { getCity } from '../../redux/searchbar/searchbarSlice';
 
 const Searchbar = () => {
   const dispatch = useDispatch();
-  // const city = useSelector((state) => state.city);
-
-  // const getCity = async (city) => {
-  //   const result = await API.getLongitudeAndLatitude(city);
-  //   return result[0];
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const city = e.target.children[0].value;
     dispatch(getCity(city));
-    // getCity(city);
   };
 
   useEffect(() => {

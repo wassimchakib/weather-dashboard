@@ -196,6 +196,7 @@ If you like this project, Please give it a ⭐️
 Thanks [@microverse](https://www.microverse.org/)
 Thanks [@WeatherAPI](https://openweathermap.org/api)
 Thanks [@Unsplash](https://unsplash.com/)
+[Nelson Sakwa](https://www.behance.net/sakwadesignstudio) the [author of the original design](https://www.behance.net/gallery/31579789/Ballhead-App-(Free-PSDs))
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

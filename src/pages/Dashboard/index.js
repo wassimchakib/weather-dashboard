@@ -36,7 +36,7 @@ const Dashboard = () => {
           className="dashboard__detail"
           to={{
             pathname: '/detail',
-            search: `city=${'london'}`,
+            search: `city=${city.name}`,
           }}
           state={{ ...city, isFahreinheit }}
         >
