@@ -11,7 +11,7 @@ export default class API {
   }
 
   static getLongitudeAndLatitude = async (cityName) => {
-    const API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${process.env.REACT_APP_API_KEY}`;
+    const API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${process.env.REACT_APP_API_KEY}`;
     const city = await fetch(API_URL)
       .then((data) => data.json())
       .then((result) => ({ lon: result[0].lon, lat: result[0].lat }));
