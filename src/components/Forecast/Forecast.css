@@ -1,0 +1,29 @@
+.forecast {
+  font-weight: 500;
+  background-color: #8bc34a0a;
+  border-radius: 60px;
+  padding: 20px 0;
+  font-size: 15px;
+}
+
+.forecast:hover {
+  background-color: #a1f3430a;
+}
+
+.forecast h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-weight: 300;
+}
+
+.forecast__weather img {
+  width: 100%;
+}
+
+.forecast span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

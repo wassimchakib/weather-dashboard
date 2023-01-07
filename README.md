@@ -31,9 +31,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Space Travelers] <a name="about-project"></a>
+# 📖 [Weather Dashboard] <a name="about-project"></a>
 
-> This is a project to .
+> This project showcase the forecast of a specific city, you can see the details of each city by clicking on the card.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -71,9 +71,9 @@
 
 <!-- > Describe between 1-3 key features of the application. -->
 
-- 
-- 
-- 
+- Search city using searchbar
+- Show temperature, sunrise and sunset for each city
+- Show full detail of the weather
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -83,7 +83,8 @@
 
 <!-- > Add a link to your deployed project. -->
 
-- [Live Demo Link]()
+- [Link1](weather-dashboard-delta.vercel.app)
+- [Link2](https://develop--lambent-beignet-32b81d.netlify.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,7 +105,7 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```
- git clone https://github.com/wassimchakib/space-travelers.git --replace
+ git clone https://github.com/wassimchakib/weather-dashboard.git 
 ```
 
 ### Install
@@ -112,9 +113,11 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```
-  cd space-travelers
+  cd weather-dashboard
   npm install
 ```
+
+create .env file with REACT_APP_API_KEY as a key to make a call to the [API](https://openweathermap.org/api)
 
 ### Usage
 
@@ -163,7 +166,8 @@ npm run deploy
 
 <!-- > Describe 1 - 3 features you will add to the project. -->
 
-- 
+- Add Air Polution page
+- Add Contact Page
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -190,6 +194,9 @@ If you like this project, Please give it a ⭐️
  ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 Thanks [@microverse](https://www.microverse.org/)
+Thanks [@WeatherAPI](https://openweathermap.org/api)
+Thanks [@Unsplash](https://unsplash.com/)
+[Nelson Sakwa](https://www.behance.net/sakwadesignstudio) the [author of the original design](https://www.behance.net/gallery/31579789/Ballhead-App-(Free-PSDs))
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
