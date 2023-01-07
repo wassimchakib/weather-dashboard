@@ -3,7 +3,10 @@ import { fahreinheitToCelcius, getHoursAndMinutes } from '../utils/functions';
 describe('Function tests', () => {
   it('should be equal to ', () => {
     const date = getHoursAndMinutes(1673041519);
-    expect(date).toEqual('09:45 PM');
+    expect(date).toEqual(new Date(1673041519 * 1000).toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+    }));
   });
 
   test(' 32 °F => 0°C', () => {
